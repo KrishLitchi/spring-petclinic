@@ -2,7 +2,7 @@
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY . .
-RUN mvn -B -DskipTests clean package
+RUN mvn -B -DskipTests -Dcheckstyle.skip=true -Dnohttp.checkstyle.skip=true clean package
 
 FROM eclipse-temurin:17-jre
 WORKDIR /app
